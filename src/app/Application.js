@@ -1,4 +1,7 @@
 import config from '../config';
+import StarWarsUniverse from './custom/StarWarsUniverse';
+import Entity from './custom/Entity';
+
 import EventEmitter from 'eventemitter3';
 
 const EVENTS = {
@@ -32,7 +35,36 @@ export default class Application extends EventEmitter {
   async init() {
     // Initiate classes and wait for async operations here.
 
+    // await StarWarsUniverse.init;
+
+
+    await fetch('https://swapi.boom.dev/api/')
+      .then(response => response.json())
+      .then(data => {
+
+        console.log('aaaaaa')
+
+        let arr = [];
+
+
+        for (var name in data) {
+
+          let entityName = new Entity(name, data[name]);
+
+          arr.push(entityName)
+
+          // StarWarsUniverse.entities.push('1');
+
+        }
+
+        StarWarsUniverse.entities = arr;
+
+        console.log(StarWarsUniverse.entities)
+
+      });
+
+    console.log('dfdsfjds')
+
     this.emit(Application.events.APP_READY);
   }
 }
-
