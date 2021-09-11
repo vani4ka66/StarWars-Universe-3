@@ -18,7 +18,7 @@ export default class Application extends EventEmitter {
 
     this.config = config;
     this.data = {
-      universe : new StarWarsUniverse()
+      universe: new StarWarsUniverse()
     };
 
     this.init();
@@ -37,35 +37,33 @@ export default class Application extends EventEmitter {
   async init() {
     // Initiate classes and wait for async operations here.
 
-    // await StarWarsUniverse.init;
-
+    // await StarWarsUniverse.init();
 
     await fetch('https://swapi.boom.dev/api/')
       .then(response => response.json())
       .then(data => {
 
-        console.log('aaaaaa')
-
         let arr = [];
-
 
         for (var name in data) {
 
-          let entityName = new Entity(name, data[name]);
+          let eName = name
 
-          arr.push(entityName)
+          fetch(data[name])
+            .then(response => response.json())
+            .then(data => {
 
-          // StarWarsUniverse.entities.push('1');
+              let entityName = new Entity(eName, data);
+              arr.push(entityName)
 
+            });
         }
 
         StarWarsUniverse.entities = arr;
 
-        console.log(StarWarsUniverse.entities)
-
+        // console.log(StarWarsUniverse.entities)
+        // console.log(Array.isArray(StarWarsUniverse.entities))
       });
-
-    console.log('dfdsfjds')
 
     this.emit(Application.events.APP_READY);
   }

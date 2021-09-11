@@ -8,28 +8,7 @@ export default class StarWarsUniverse {
         this.init();
     }
 
+    async init() {
 
-    // async init() {
-
-    //     await fetch('https://swapi.boom.dev/api/')
-    //         .then(response => response.json())
-    //         .then(data => {
-
-    //             console.log('aaaaaa')
-
-
-    //             for (var name in data) {
-
-    //                 let entityName = new Entity(name, data[name]);
-
-    //                 this.entities.push(new Entity(entityName));
-
-    //             }
-
-    //         });
-    // }
-
-    async init(){
-        
     }
 }
