@@ -47,7 +47,7 @@ export default class Application extends EventEmitter {
 
         for (var name in data) {
 
-          let eName = name
+          let eName = name;
 
           fetch(data[name])
             .then(response => response.json())
@@ -61,7 +61,7 @@ export default class Application extends EventEmitter {
 
         StarWarsUniverse.entities = arr;
 
-        // console.log(StarWarsUniverse.entities)
+        console.log(StarWarsUniverse.entities)
         // console.log(Array.isArray(StarWarsUniverse.entities))
       });
 

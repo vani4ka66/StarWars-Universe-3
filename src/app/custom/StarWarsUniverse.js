@@ -3,7 +3,7 @@ import Entity from './Entity'
 export default class StarWarsUniverse {
     constructor() {
 
-        this.entities = [];
+        this._entities = [];
 
         this.init();
     }
