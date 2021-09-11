@@ -28,4 +28,8 @@ export default class StarWarsUniverse {
 
     //         });
     // }
+
+    async init(){
+        
+    }
 }
